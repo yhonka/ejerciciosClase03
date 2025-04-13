@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learning Vite + TS with Runner Geeks</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <style>
+      /* Permite que en modo desktop, la columna de los logos se muestre a la izquierda de la pantalla y los libros a la derecha de la pantalla. */
+      .app {
+        display: flex;
+        flex-direction: row; /* Opcional: por defecto es "row" */
+        justify-content: center;
+      }
+      /* Hace que la foto este a la izquierda del nombre y autor del libro. */
+      .card {
+        display: flex;
+        flex-direction: row; /* Opcional: por defecto es "row" */
+        justify-content: center;
+        .card-img {
+          max-width: 100px;
+          max-height: 150px;
+        }
+      }
+      .first-div {
+        background-color: lightblue;
+        padding: 20px;
+      }
+      /* En modo desktop, permite que por fila se puedan mostrar al menos dos libros. */
+      .second-div {
+        background-color: lightgreen;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+      }
+      /* En modo mobile, no muestra los logos de Vite ni TS, solo muestra la lista de libros. */
+      /* Para pantallas con un ancho máximo de 480px */
+      @media only screen and (max-width: 480px) {
+        .first-div {
+          display: none; /* Oculta el elemento en móviles. */
+        }
+        /* En modo mobile, permite que por fila se muestre una sola lista vertical. */
+        .second-div {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" class="app">
+      <div class="first-div">
+        <a href="https://vitejs.dev" target="_blank">
+          <img src="vite.svg" class="logo" alt="Vite logo" />
+        </a>
+        <a href="https://www.typescriptlang.org/" target="_blank">
+          <img
+            src="src/typescript.svg"
+            class="logo vanilla"
+            alt="TypeScript logo"
+          />
+        </a>
+        <h1>Vite + TypeScript</h1>
+        <div class="card">
+          <!-- Boton que se modifico para ordenar el listado de libros el cual esta siendo escuchado su evento click -->
+          <button id="counter" type="button"></button>
+        </div>
+        <p class="read-the-docs">
+          Click on the Vite and TypeScript logos to learn more
+        </p>
+      </div>
+      <!-- Seccion modificada con Javascript para mostrar el listado de libros -->
+      <div class="second-div" id="bookContainer">
+        <!-- Cards will be dynamically added here -->
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
